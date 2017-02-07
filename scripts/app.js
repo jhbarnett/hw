@@ -3,6 +3,7 @@ angular
     .controller('BeerCtrl', function($scope, $http, $resource) {
         fetchBeerList()
         
+        $scope.selection = null
         $scope.beerList = []
 
         function fetchBeerList(){
@@ -20,6 +21,10 @@ angular
                 })
           )
         } 
+
+        $scope.handleSelection = function(e, beer) {
+            $scope.selection = beer
+        }
 
         $scope.$on('NameSort', function(){
             let sortedList = [...$scope.beerList]

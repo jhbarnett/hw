@@ -23,12 +23,25 @@
 		<div class="container" ng-controller="BeerCtrl">
 			
 			<div class="sidebar">	
-				<div id="title">
-					<h1>BEER</h1>
+				<div class="tophalf">
+					<div ng-if="!selection" id="title">
+						<h1>Pick Your Poison:</h1>
+					</div> 
+					<div ng-if="selection" id="detail">
+						<div id="sel_A">
+							<img class="sel_img" ng-src="{{selection.image}}"/>
+							<div class="sel_B">
+								<div>{{selection.name}}</div> <br/>
+								<div>{{selection.abv}} ABV</div> <br/>
+								<div>{{selection.tagline}}</div>
+							</div>
+						</div>
+						<div class="sel_desc">{{selection.description}}</div>
+					</div>
 				</div>
 				<md-input-container id="form">
-						<div>
-							<input ng-model="query" type="text" />
+						<div id="input_query">
+							<input ng-model="query" type="text" placeholder="Have one in mind?" />
 						</div>
 						<md-button ng-click="$emit('NameSort')">Sort by Name</md-button>
 						<md-button ng-click="$emit('ABVSort')">Sort by ABV</md-button>
@@ -36,7 +49,8 @@
 			</div>
 
 			<div class="beerList" layout="column">
-				<div class="beer" layout="row" ng-repeat="beer in beerList | filter:query">
+				<div class="beer" layout="row" ng-repeat="beer in beerList | filter:query"
+							ng-click="handleSelection($event, beer)">
 					<div class='col-1' layout="column">
 						<div class="beer_img"><img ng-src="{{beer.image}}"/></div>
 					</div>
