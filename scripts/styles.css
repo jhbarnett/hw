@@ -1,16 +1,146 @@
+html,
 body {
-  width: 100%;
+  height:100%;
 }
 
-.beerList {}
+.container {
+  display: flex;
+  height: 100%;
+  background-color: #2196f3;
+}
 
-.beer {}
+.sidebar {
+  display: flex;
+  flex: 1.25;
+  flex-direction: column;
+  height: 90%;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border-right: 2px solid white;
+}
+
+#title { 
+  width: 90%;
+  flex: 1;
+  text-align: center;
+  border-bottom: 2px solid white;
+}
+
+#title > h1 {
+  padding: 90px 0;
+  font-size: 48px;
+}
+
+#form {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+}
+
+#form input{
+  color: white;
+  border-bottom-color: white;
+  flex: 1;
+  font-size: 24px;
+}
+
+#form #buttons {
+  align-content: center;
+}
+
+.beerList {
+  flex: 2;
+  align-items: center;
+  align-self: center;
+  min-height: 0px;
+  overflow: scroll; 
+  overflow-x: hidden;
+  height:97%;
+}
+
+.beer {
+  box-shadow: 1px 1px 1px 2px rgba(0, 0, 0, 0.24);
+  width: 90%;
+  min-height: 20%;
+  margin: .75%;
+  background-color: white;
+  align-items: center;
+}
+
+.col-1 {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
 
 .beer_img img {
-  width: 50px;
-  height: 150px;
+  width: 45px;
+  height: 130px;
 }
 
-.beer_name {}
-.beer_tagline {}
-.beer_abv {}
+.col-2 {
+  flex: 2;
+  align-items: stretch;
+  text-align: center;
+  margin: 15px;
+}
+
+.beer_name {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.beer_tagline {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.col-3 {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.beer_abv {
+  font-size: 50px;
+}
+
+.abv {
+  border-top: 2px solid;
+}
+
+@media (max-width: 850px){
+  .container {
+    flex-direction: column;
+  }  
+
+  .sidebar {
+    flex: .75;
+    border-right: none;
+    border-bottom: 2px solid white;
+    margin-bottom: 20px;
+  }
+
+  #title {
+    width: 100%;
+  }
+
+  #title > h1 {
+    padding: 0;
+    font-size: 24px;
+  }
+
+  #form {
+    display: block;
+  }
+}

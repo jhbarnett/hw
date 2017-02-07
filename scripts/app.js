@@ -15,13 +15,16 @@ angular
                     tagline: beer.tagline,
                     image: beer.image_url,
                     name: beer.name,
+                    description: beer.description
                   }    
                 })
           )
         } 
 
         $scope.$on('NameSort', function(){
-            $scope.beerList.sort((a, b) => {
+            let sortedList = [...$scope.beerList]
+            
+            sortedList.sort((a, b) => {
                 const nameA = a.name.toUpperCase() 
                 const nameB = b.name.toUpperCase()
                 if (nameA < nameB) { return -1 }
@@ -29,19 +32,27 @@ angular
                 // names must be equal
                 return 0
             })
+
+            $scope.beerList = 
+              sortedList[0] === $scope.beerList[0] ? 
+                sortedList.reverse() : sortedList
         })
 
         $scope.$on('ABVSort', function(){
-            $scope.beerList.sort((a, b) => {
+            let sortedList = [...$scope.beerList]
+
+            sortedList.sort((a, b) => {
                 return a.abv - b.abv
             })
+
+            $scope.beerList = 
+              sortedList[0] === $scope.beerList[0] ? 
+                sortedList.reverse() : sortedList
         })
-
-
-        
+      
     })
     .config(function($mdThemingProvider) {
         $mdThemingProvider.theme('docs-dark', 'default')
-            .primaryPalette('yellow')
+            .primaryPalette('light-blue')
             .dark();
     });
