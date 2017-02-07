@@ -1,0 +1,16 @@
+body {
+  width: 100%;
+}
+
+.beerList {}
+
+.beer {}
+
+.beer_img img {
+  width: 50px;
+  height: 150px;
+}
+
+.beer_name {}
+.beer_tagline {}
+.beer_abv {}
